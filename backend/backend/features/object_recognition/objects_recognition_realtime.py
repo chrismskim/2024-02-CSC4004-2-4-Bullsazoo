@@ -26,6 +26,7 @@ def send_labels_to_server(labels):
 
 # 실시간 객체 탐지
 def detect_objects_realtime(model):
+    #dataset.YML 설정
     update_dataset_yaml()
     cap = cv2.VideoCapture(0)
     if not cap.isOpened():
