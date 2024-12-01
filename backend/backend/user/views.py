@@ -1,7 +1,7 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login
 from .models import User
 from .serializers import UserSerializer
 
@@ -29,9 +29,3 @@ class LoginView(APIView):
 
         return Response({"message": "로그인 정보가 올바르지 않습니다."}, status=status.HTTP_401_UNAUTHORIZED)
 
-
-# class LogoutView(APIView):
-#     def post(self, request):
-#         # 세션 로그아웃 처리
-#         logout(request)
-#         return Response({"message": "로그아웃 성공"}, status=status.HTTP_200_OK)
