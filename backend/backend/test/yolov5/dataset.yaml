@@ -24,5 +24,5 @@ names:
   - "포카리스웨트"
 
 nc: 23  # 클래스 수 (23개)
-train: D:\PhyCharmProjects\2024_OSSP\2024-02-CSC4004-2-4-Bullsazoo\backend\backend\test\yolov5\dataset\images\train
-val: D:\PhyCharmProjects\2024_OSSP\2024-02-CSC4004-2-4-Bullsazoo\backend\backend\test\yolov5\dataset\images\val
+train:
+val:

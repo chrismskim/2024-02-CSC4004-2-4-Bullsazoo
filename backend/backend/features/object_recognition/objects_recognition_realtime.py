@@ -7,6 +7,7 @@ import requests
 from backend.backend.api.stt_tts.tts_handler import generate_speech
 from backend.backend.api.gpt.gpt_text_generator import gpt_response
 from backend.backend.settings import BASE_DIR
+from backend.backend.test.yolov5.loadimage import update_dataset_yaml
 
 #감지한 상품 중에 라벨에 없으면 커트
 #삼양라면, 침대가 라벨에 잡힐 시, 침대는 커트
@@ -25,12 +26,12 @@ def send_labels_to_server(labels):
 
 # 실시간 객체 탐지
 def detect_objects_realtime(model):
+    update_dataset_yaml()
     cap = cv2.VideoCapture(0)
     if not cap.isOpened():
         generate_speech("웹캠을 찾을 수 없습니다. 다시 시도하세요", None)
 
     generate_speech("화면에 물건을 가까이 대주세요", None)
-    last_detection_time = time.time()
 
     while cap.isOpened():
         global detected
