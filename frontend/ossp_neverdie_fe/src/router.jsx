@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import MainPage from "./pages/MainPage";
 import NotFound from "./pages/NotFound";
-import Aboutpage from "./pages/LandingAbout";
+
 
 export const router = createBrowserRouter([
     {
@@ -9,9 +9,4 @@ export const router = createBrowserRouter([
         element: <MainPage />,
         errorElement: <NotFound />,
     },
-    {
-        path: "/AboutPage",
-        element: <Aboutpage />,
-        errorElement: <NotFound />,
-    }
 ]);
