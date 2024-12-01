@@ -1,7 +1,7 @@
 import React from "react";
 import styled, { ThemeProvider } from "styled-components";
-import GlobalStyle from "./global";
-import { theme } from "./theme";
+import GlobalStyle from "./../styles/global";
+import { theme } from "./../styles/theme";
 
 
 const Container = styled.div`

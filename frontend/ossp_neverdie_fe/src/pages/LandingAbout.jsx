@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from "styled-components";
-import GlobalStyle from './global';
-import Kenwoo from './assets/images/kenwoo.svg';
-import Jeayong from './assets/images/jeayong.svg';
-import Kyeongsub from './assets/images/kyeongsub.svg';
-import Keonmin from './assets/images/keonmin.svg';
-import Minseong from './assets/images/minseong.svg';
-
+import GlobalStyle from './../styles/global';
+import Kenwoo from './../assets/images/kenwoo.svg';
+import Jeayong from './../assets/images/jeayong.svg';
+import Kyeongsub from './../assets/images/kyeongsub.svg';
+import Keonmin from './../assets/images/keonmin.svg';
+import Minseong from './../assets/images/minseong.svg';
+import Eye_icon from './../assets/images/Eye_icon.svg';
 const Container = styled.div`
   display: flex;
   justify-content: center;
