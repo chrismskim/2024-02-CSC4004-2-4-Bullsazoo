@@ -1,7 +1,6 @@
 import os
 from pathlib import Path
 
-import MIDDLEWARE
 from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -12,11 +11,11 @@ load_dotenv()
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('DJANGO_DB_NAME'),  # 환경 변수에서 데이터베이스 이름 가져오기
-        'USER': os.environ.get('DJANGO_DB_USER'),  # 환경 변수에서 사용자 가져오기
-        'PASSWORD': os.environ.get('DJANGO_DB_PASSWORD'),  # 환경 변수에서 비밀번호 가져오기
-        'HOST': os.environ.get('DJANGO_DB_HOST', 'localhost'),  # 기본값: localhost
-        'PORT': os.environ.get('DJANGO_DB_PORT', '5432'),  # 기본값: 5432
+        'NAME': os.environ.get('DJANGO_DB_NAME', 'default_db_name'),
+        'USER': os.environ.get('DJANGO_DB_USER', 'default_user'),
+        'PASSWORD': os.environ.get('DJANGO_DB_PASSWORD', 'default_password'),
+        'HOST': os.environ.get('DJANGO_DB_HOST', 'localhost'),
+        'PORT': os.environ.get('DJANGO_DB_PORT', '5432'),
     }
 }
 
@@ -44,14 +43,16 @@ INSTALLED_APPS = [
     'drf_yasg',
     'rest_framework',
     'corsheaders',
+    'user',
 ]
-
-MIDDLEWARE.insert(0, 'corsheaders.middleware.CorsMiddleware')
 
 CORS_ALLOW_ALL_ORIGINS = True
 
+DEBUG = False  # 프로덕션 환경에서는 반드시 False
+ALLOWED_HOSTS = ['yourdomain.com', '127.0.0.1']  # 허용할 호스트 추가
+
 SWAGGER_SETTINGS = {
-    'USE_SESSION_AUTH': False,
+    'USE_SESSION_AUTH': True,
     'SECURITY_DEFINITIONS': {
         'Token': {
             'type': 'apiKey',
@@ -67,6 +68,8 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
     ),
 }
+
+AUTH_USER_MODEL = 'user.User'
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',

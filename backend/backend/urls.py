@@ -16,7 +16,6 @@ schema_view = get_schema_view(                  #  API 스키마를 만들기 �
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/landing/', include('landing.urls')),  # 랜딩 페이지 앱 추가
     path('api/user/', include('user.urls')),       # 기존 user 앱
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
