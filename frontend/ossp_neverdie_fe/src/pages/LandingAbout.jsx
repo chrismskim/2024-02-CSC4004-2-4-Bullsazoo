@@ -8,14 +8,15 @@ import Keonmin from './../assets/images/keonmin.svg';
 import Minseong from './../assets/images/minseong.svg';
 import Eye_icon from './../assets/images/Eye_icon.svg';
 
-/*            주석부분은 global 컴포넌트로 대체 할거 같아서 주석 처리 해놨음
 const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 1976px;;
-  width: 430px;
-  background-color: #000b58;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    margin: 0 auto;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #000B58;
 `;
 
 const Card = styled.div`
@@ -26,7 +27,6 @@ const Card = styled.div`
   left: calc(50% - 400px/2);
   text-align: center;
 `;
-*/
 
 const Header = styled.div`
   font-size: 20px;
@@ -101,48 +101,51 @@ const TeamSection = styled.div`
 const Landing_About = () => {
   return (
     <>
-      <GlobalStyle />
-      <Header>시각 장애인을 위한<br />쇼핑, 일상 보조 서비스 </Header>
-      <Icon><img src={Eye_icon} alt="eye_icon" /></Icon>
-      <ImageBox></ImageBox>
-      <ImageBox />
-      <ImageBox />
-      <ImageBox />
-      <Footer>OSSP Team NeverDie_4</Footer>
-      <TeamSection>
-        <h3>BE | Back-End Team member</h3>
-        <div className="member">
-          <img src={Jeayong} alt="jeayong" />
-          <div>
-            신재용<br />LD / BE / AI<br />YOLO 모델 학습
-          </div>
-        </div>
-        <div className="member">
-          <img src={Kyeongsub} alt="Kyeongsub" />
-          <div>
-            김경섭<br />BE / AI<br />모델 설계 / 홍보 / 배포
-          </div>
-        </div>
-        <div className="member">
-          <img src={Keonmin} alt="keonmin" />
+      <Container>
+        <GlobalStyle />
+        <Header>시각 장애인을 위한<br />쇼핑, 일상 보조 서비스 </Header>
+        <Icon><img src={Eye_icon} alt="eye_icon" /></Icon>
+        <ImageBox></ImageBox>
+        <ImageBox />
+        <ImageBox />
+        <ImageBox />
+        <Footer>OSSP Team NeverDie_4</Footer>
+        <TeamSection>
+          <h3>BE | Back-End Team member</h3>
+          <div className="member">
+            <img src={Jeayong} alt="jeayong" />
             <div>
-              이건민<br />BE / AI<br />TTS / STT 모델 설계 / 학습
+              신재용<br />LD / BE / AI<br />YOLO 모델 학습
             </div>
           </div>
-        <h3>FE | Front-End Team member</h3>
-        <div className="member">
-          <img src={Kenwoo} alt="kenwoo" />
-          <div>
-            강근우<br />PM / Design / FE<br />개발 문서 작성/레이아웃 구성 / 통신
-          </div>
-        </div>
-        <div className="member">
-          <img src={Minseong} alt="minseong" />
+          <div className="member">
+            <img src={Kyeongsub} alt="Kyeongsub" />
             <div>
-              김민성<br />PM / FE<br />레이아웃 구성 / 배포
+              김경섭<br />BE / AI<br />모델 설계 / 홍보 / 배포
             </div>
           </div>
-      </TeamSection>
+          <div className="member">
+            <img src={Keonmin} alt="keonmin" />
+              <div>
+                이건민<br />BE / AI<br />TTS / STT 모델 설계 / 학습
+              </div>
+            </div>
+          <h3>FE | Front-End Team member</h3>
+          <div className="member">
+            <img src={Kenwoo} alt="kenwoo" />
+            <div>
+              강근우<br />PM / Design / FE<br />개발 문서 작성/레이아웃 구성 / 통신
+            </div>
+          </div>
+          <div className="member">
+            <img src={Minseong} alt="minseong" />
+              <div>
+                김민성<br />PM / FE<br />레이아웃 구성 / 배포
+              </div>
+            </div>
+        </TeamSection>
+      </Container>
+      
     </>
   );
 };

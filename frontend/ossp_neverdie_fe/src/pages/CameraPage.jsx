@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
+import OpenCV from "../components/Camera/OpenCV";
+import CameraButtons from "../components/Camera/CameraButtons";
 
 const Container = styled.div`
     width: 100%;
@@ -12,13 +14,14 @@ const Container = styled.div`
     background-color: #000B58;
 `;
 
-function LoginSuccessPage() {
-    
+function CameraPage() {
+
     return (
         <Container>
-            
+            <OpenCV />
+            <CameraButtons />
         </Container>
     );
 }
 
-export default LoginSuccessPage;
+export default CameraPage;
