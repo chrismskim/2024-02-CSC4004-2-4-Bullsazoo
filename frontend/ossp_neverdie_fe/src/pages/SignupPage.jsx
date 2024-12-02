@@ -38,7 +38,7 @@ function SignupPage() {
     return (
         <Container>
             <Header stepText={stepTexts[step]} />
-            <SignupButtons onNext={handleNext} onPrev={handlePrev} />
+            <SignupButtons onNext={handleNext} onPrev={handlePrev} currentStep={step} />
         </Container>
     );
 }
