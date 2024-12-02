@@ -4,6 +4,9 @@ import NotFound from "./pages/NotFound";
 import LandingPage from "./pages/LandingPage"; 
 import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage";
+import Landing_About from "./pages/LandingAbout";
+import CameraPage from "./pages/CameraPage";
+import MyPage from "./pages/MyPage";
 
 export const router = createBrowserRouter([
     {
@@ -22,5 +25,17 @@ export const router = createBrowserRouter([
     {
         path: "/Login",
         element: <LoginPage />,
+    },
+    {
+        path: "/About",
+        element: <Landing_About />,
+    },
+    {
+        path: "/Camera",
+        element: <CameraPage />,
+    },
+    {
+        path: "/MyPage",
+        element: <MyPage />,
     },
 ]);

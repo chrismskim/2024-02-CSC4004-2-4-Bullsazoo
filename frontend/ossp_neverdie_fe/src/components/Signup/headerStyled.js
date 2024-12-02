@@ -23,7 +23,7 @@ export const Container = styled.div`
 `;
 
 export const HeaderIcon = styled.div`
-    width: 120px;
+    width: 100px;
     margin-top: 30px;
     img {
         width: 100%;
