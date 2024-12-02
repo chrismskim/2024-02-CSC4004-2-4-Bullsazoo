@@ -14,6 +14,7 @@ export const Container = styled.div`
 export const HeaderIcon = styled.div`
     width: 140px;
     margin-top: 50px;
+    cursor: pointer;
     img{
         width: 100%;
     }

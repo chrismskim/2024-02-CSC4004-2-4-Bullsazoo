@@ -43,15 +43,16 @@ export const LoginText = styled.div`
     font-size: 24px;
     font-weight: 900;
     color: #FFE31A;
+    margin-bottom: 40px;
 `;
 
 export const StartButton = styled.div`
     width: 380px;
     height: 100px;
-    border: 3px solid #FFE31A;
+    border: 3px solid #001F3F;
     border-radius: 36px;
-    background-color: #000B58;
-    color: #FFE31A;
+    background-color: #FFE31A;
+    color: #000B58;
     font-size: 40px;
     font-weight: 900;
     display: flex;
@@ -60,12 +61,12 @@ export const StartButton = styled.div`
     cursor: pointer;
     transition: transform 0.2s ease, background-color 0.2s ease;
     &:hover {
-        background-color: #002080;
-        transform: scale(1.03);
+        background-color: #FFCC00;
+        transform: scale(1.03); 
     }
 
     &:active {
-        background-color: #001060;
-        transform: scale(0.95);
+        background-color: #FFD700;
+        transform: scale(0.95); 
     }
 `;
