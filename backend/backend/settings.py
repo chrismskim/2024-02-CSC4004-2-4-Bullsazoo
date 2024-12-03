@@ -32,7 +32,6 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -44,12 +43,17 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'user',
+    'analyze'
 ]
 
-CORS_ALLOW_ALL_ORIGINS = True
+# CORS 설정
+CORS_ALLOW_ALL_ORIGINS = True # 모든 호스트 허용
 
 DEBUG = False  # 프로덕션 환경에서는 반드시 False
 ALLOWED_HOSTS = ['yourdomain.com', '127.0.0.1']  # 허용할 호스트 추가
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 SWAGGER_SETTINGS = {
     'USE_SESSION_AUTH': True,
