@@ -7,7 +7,8 @@ import Kyeongsub from './../assets/images/kyeongsub.svg';
 import Keonmin from './../assets/images/keonmin.svg';
 import Minseong from './../assets/images/minseong.svg';
 import Eye_icon from './../assets/images/Eye_icon.svg';
-
+import Example_image_detect from './../assets/images/image_detect.svg';
+import Landing_image from './../assets/images/landing_image.svg';
 const Container = styled.div`
     width: 100%;
     min-height: 100vh;
@@ -37,21 +38,25 @@ const Header = styled.div`
 `;
 
 const Icon = styled.div`
-  position: absolute;
+  position: relative;
   width: 120px;
   height: 120px;
-  left: calc(50% - 120px/2);
-  top: 134px;
+  align-items: center;
   background: #000B58;
   border-radius: 4px;
 `;
 
 const ImageBox = styled.div`
-  width: 400px;
-  height: 200px;
+  width: 306px;
+  height: 276px;
   background-color: #ffffff;
   border-radius: 10px;
   margin: 10px 0;
+  img {
+      width: 100%;
+      height: 100%;
+      object-fit: relative;
+    }
 `;
 
 const Footer = styled.div`
@@ -60,7 +65,7 @@ const Footer = styled.div`
 
 const TeamSection = styled.div`
   width: 380px;
-  height: 674px;
+  height: 600px;
   left: 25px;
   top: 1210px;
 
@@ -101,51 +106,50 @@ const TeamSection = styled.div`
 const Landing_About = () => {
   return (
     <>
+     <GlobalStyle />
       <Container>
-        <GlobalStyle />
         <Header>시각 장애인을 위한<br />쇼핑, 일상 보조 서비스 </Header>
-        <Icon><img src={Eye_icon} alt="eye_icon" /></Icon>
-        <ImageBox></ImageBox>
-        <ImageBox />
-        <ImageBox />
-        <ImageBox />
-        <Footer>OSSP Team NeverDie_4</Footer>
-        <TeamSection>
-          <h3>BE | Back-End Team member</h3>
-          <div className="member">
-            <img src={Jeayong} alt="jeayong" />
-            <div>
-              신재용<br />LD / BE / AI<br />YOLO 모델 학습
-            </div>
-          </div>
-          <div className="member">
-            <img src={Kyeongsub} alt="Kyeongsub" />
-            <div>
-              김경섭<br />BE / AI<br />모델 설계 / 홍보 / 배포
-            </div>
-          </div>
-          <div className="member">
-            <img src={Keonmin} alt="keonmin" />
+          <Icon><img src={Eye_icon} alt="eye_icon" /></Icon>
+          <ImageBox><img src={Landing_image} alt="image_detect exam" /></ImageBox>
+          <ImageBox />
+          <ImageBox />
+          <ImageBox><img src={Example_image_detect} alt="image_detect exam" /></ImageBox>
+          <Footer>OSSP Team NeverDie_4</Footer>
+          <TeamSection>
+            <h3>BE | Back-End Team member</h3>
+            <div className="member">
+              <img src={Jeayong} alt="jeayong" />
               <div>
-                이건민<br />BE / AI<br />TTS / STT 모델 설계 / 학습
+                신재용<br />LD / BE / AI<br />YOLO 모델 학습
               </div>
             </div>
-          <h3>FE | Front-End Team member</h3>
-          <div className="member">
-            <img src={Kenwoo} alt="kenwoo" />
-            <div>
-              강근우<br />PM / Design / FE<br />개발 문서 작성/레이아웃 구성 / 통신
+            <div className="member">
+              <img src={Kyeongsub} alt="Kyeongsub" />
+              <div>
+                김경섭<br />BE / AI<br />모델 설계 / 홍보 / 배포
+              </div>
             </div>
-          </div>
-          <div className="member">
-            <img src={Minseong} alt="minseong" />
+            <div className="member">
+              <img src={Keonmin} alt="keonmin" />
+                <div>
+                  이건민<br />BE / AI<br />TTS / STT 모델 설계 / 학습
+                </div>
+              </div>
+            <h3>FE | Front-End Team member</h3>
+            <div className="member">
+              <img src={Kenwoo} alt="kenwoo" />
+              <div>
+                강근우<br />PM / Design / FE<br />개발 문서 작성/레이아웃 구성 / 통신
+              </div>
+            </div>
+            <div className="member">
+              <img src={Minseong} alt="minseong" />
               <div>
                 김민성<br />PM / FE<br />레이아웃 구성 / 배포
               </div>
             </div>
-        </TeamSection>
+          </TeamSection>        
       </Container>
-      
     </>
   );
 };
