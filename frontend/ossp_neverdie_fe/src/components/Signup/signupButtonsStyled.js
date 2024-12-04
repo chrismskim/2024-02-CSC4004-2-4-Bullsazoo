@@ -10,7 +10,7 @@ export const Container = styled.div`
     gap: 24px;
 `;
 
-export const ButtonType1 = styled.div`
+export const ButtonType_Repeat = styled.div`
     width: 380px;
     height: 100px;
     border: 3px solid #000B58;

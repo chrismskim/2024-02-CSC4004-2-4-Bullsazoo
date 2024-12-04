@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Header from "../components/Signup/header";
 import SignupButtons from "../components/Signup/signupButtons";
-import useTTSSTT from "../hooks/useTTSSTT"; // TTSSTT 훅 임포트
+import useTTSSTT from "../hooks/useTTSSTT";
 
 const Container = styled.div`
     width: 100%;
@@ -16,22 +16,28 @@ const Container = styled.div`
 `;
 
 const OutputBox = styled.div`
-    width: 80%;
+    width: 90%;
     min-height: 50px;
-    margin-top: 20px;
     padding: 10px;
     border: 2px solid #FFE31A;
-    border-radius: 5px;
-    background-color: #f5f5f5;
-    color: #333;
-    font-size: 1rem;
+    border-radius: 14px;
+    background-color: #000B58;
+    color: #FFE31A;
+    font-size: 20px;
     text-align: left;
     word-wrap: break-word;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding-left: 14px;
+    margin-bottom: 20px;
 `;
 
 function SignupPage() {
-    const [step, setStep] = useState(1);
+    const [step, setStep] = useState(1); // 현재 단계
+    const [playedSteps, setPlayedSteps] = useState([]); // 음성 출력된 단계 추적
+    const [formData, setFormData] = useState({
+        name: "", // 이름 저장
+        id: "", // 개인 식별 ID 저장
+    });
+
     const { speak, startListening, stopListening, transcript, listening } = useTTSSTT();
 
     const stepTexts = {
@@ -46,15 +52,29 @@ function SignupPage() {
         3: "사용자를 식별할 수 있는 개인 ID를 말씀해 주세요.",
     };
 
-    // 단계 변경 시 음성 출력
+    // 단계 변경 시 음성 출력 (최초 1회만 출력)
     useEffect(() => {
-        if (!listening) {
+        if (!playedSteps.includes(step)) {
             speak(stepInstructions[step]);
+            setPlayedSteps((prev) => [...prev, step]);
         }
-    }, [step, speak, listening]);
+    }, [step, speak, playedSteps]);
 
     const handleNext = () => {
-        if (step < 3) setStep(step + 1);
+        if (step === 2) {
+            // 이름 저장
+            setFormData((prev) => ({ ...prev, name: transcript }));
+        } else if (step === 3) {
+            // 개인 식별 ID 저장
+            setFormData((prev) => ({ ...prev, id: transcript }));
+        }
+
+        if (step < 3) {
+            setStep(step + 1);
+        } else {
+            // 마지막 단계에서 두 정보 콘솔 출력
+            console.log("회원 가입 정보:", formData);
+        }
     };
 
     const handlePrev = () => {
@@ -62,23 +82,24 @@ function SignupPage() {
     };
 
     const handleRepeat = () => {
-        if (!listening) {
-            speak(stepInstructions[step]);
-        }
+        speak(stepInstructions[step]);
     };
 
     const handleStartListening = () => {
-        startListening(); // 음성 인식 시작
+        startListening();
     };
 
     const handleStopListening = () => {
-        stopListening(); // 음성 인식 중지
-        console.log(`STT Result for Step ${step}:`, transcript); // 콘솔에 텍스트 출력
+        stopListening();
+        console.log(`STT Result for Step ${step}:`, transcript);
     };
 
     return (
         <Container>
             <Header stepText={stepTexts[step]} />
+            <OutputBox>
+                {transcript || "여기에 음성 인식된 텍스트가 표시됩니다."}
+            </OutputBox>
             <SignupButtons
                 onNext={handleNext}
                 onPrev={handlePrev}
@@ -87,9 +108,6 @@ function SignupPage() {
                 onStopListening={handleStopListening}
                 currentStep={step}
             />
-            <OutputBox>
-                {transcript || "여기에 음성 인식된 텍스트가 표시됩니다."}
-            </OutputBox>
         </Container>
     );
 }
