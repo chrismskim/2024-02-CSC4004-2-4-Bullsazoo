@@ -1,34 +1,64 @@
 import os
-from django.shortcuts import render
+from django.conf import settings
 from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from ultralytics import YOLO
+from drf_yasg.utils import swagger_auto_schema
+from drf_yasg import openapi
+from rest_framework.parsers import MultiPartParser
 from django.core.files.storage import default_storage
+
 from .models import AnalyzeResult
 from .yolov5_handler import detect_objects
+from .serializers import DetectionSerializer, AnalyzeResultSerializer
 
-@csrf_exempt  # 테스트용. 실제 사용 시 CSRF 보안 고려 필요.
-def analyze_image(request):
-    if request.method == 'POST':
-        # 업로드된 이미지 파일 가져오기
-        uploaded_file = request.FILES['image']
-        image_path = default_storage.save(f'uploads/{uploaded_file.name}', uploaded_file)
 
-        # YOLOv5로 객체 감지
-        detections = detect_objects(image_path)
+# YOLO 모델 로드
+MODEL_PATH = settings.YOLO_MODEL_PATH  # YOLO 모델 경로
+model = YOLO(MODEL_PATH)
 
-        # 데이터베이스에 저장
-        result = AnalyzeResult.objects.create(
-            image=image_path,
-            detected_objects=detections
-        )
+class YoloImageAnalysisView(APIView):
+    parser_classes = [MultiPartParser]
 
-        # 프론트엔드로 반환할 데이터
-        response_data = {
-            'id': result.id,
-            'image_url': request.build_absolute_uri(result.image.url),
-            'detections': detections,
-        }
-        return JsonResponse(response_data, status=200)
+    @swagger_auto_schema(
+        operation_description="Upload an image to analyze using YOLOv5.",
+        request_body=openapi.Schema(
+            type=openapi.TYPE_OBJECT,
+            properties={
+                'file': openapi.Schema(type=openapi.TYPE_FILE, description='Image file for analysis'),
+            },
+            required=['file'],
+        ),
+        responses={
+            200: AnalyzeResultSerializer(many=False),
+            400: 'No file provided',
+            500: 'Internal server error',
+        },
+    )
 
-    return JsonResponse({'error': 'Invalid request'}, status=400)
+    def post(self, request, *args, **kwargs):
+        file = request.FILES.get('file')
+        if not file:
+            return Response({"error": "No file provided"}, status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            # 이미지 저장
+            image_path = default_storage.save(f'uploads/{file.name}', file)
+            absolute_image_path = os.path.join(settings.MEDIA_ROOT, image_path)
+
+            # YOLOv5 핸들러 호출
+            detected_objects = detect_objects(absolute_image_path)
+
+            # 응답 데이터 생성
+            result = AnalyzeResult.objects.create(image=image_path, detected_objects=detected_objects)
+            serializer = AnalyzeResultSerializer(result)
+
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except Exception as e:
+            return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+
 
