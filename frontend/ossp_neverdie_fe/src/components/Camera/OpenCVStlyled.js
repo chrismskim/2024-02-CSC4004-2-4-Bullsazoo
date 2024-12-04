@@ -9,20 +9,80 @@ export const Container = styled.div`
     align-items: center;
     margin-bottom: 20px;
     margin-top: 18px;
+    gap: 20px;
 `;
-
+export const ButtonContainer = styled.div`
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+`;
 export const CameraFrame = styled.div`
-        position: relative;
-    width: 380px;
-    height: 520px;
+    position: relative;
+    width: auto;
+    height: auto;
+    max-width: 380px;
+    max-height: 520px;
     display: flex;
     justify-content: center;
     align-items: center;
     color: #FFE31A;
     border: 4px solid #FFE31A;
     border-radius: 20px;
+    overflow: hidden;
 `;
 
+export const  ButtonType1 = styled.div`
+    width: 360px;
+    height: 100px;
+    border: 3px solid #FFE31A;
+    border-radius: 36px;
+    background-color: #000B58;
+    color: #FFE31A;
+    font-size: 40px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+
+    &:hover {
+        background-color: #002080;
+        transform: scale(1.03);
+    }
+
+    &:active {
+        background-color: #001060;
+        transform: scale(0.95);
+    }
+    
+`;
+
+export const ButtonType2 = styled.div`
+    width: 360px;
+    height: 100px;
+    border: 4px solid #001F3F;
+    border-radius: 36px;
+    background-color: #FFE31A;
+    color: #000B58;
+    font-size: 40px;
+    font-weight: 900;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+
+    &:hover {
+        background-color: #FFCC00;
+        transform: scale(1.03); 
+    }
+
+    &:active {
+        background-color: #FFD700;
+        transform: scale(0.95); 
+    }
+`;
 export const PopupGoods = styled.div`
     position: absolute;
     top: 120px;

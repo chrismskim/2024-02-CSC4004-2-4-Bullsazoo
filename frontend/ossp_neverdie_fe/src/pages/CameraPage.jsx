@@ -19,7 +19,8 @@ function CameraPage() {
     return (
         <Container>
             <OpenCV />
-            <CameraButtons />
+            {/*<CameraButtons />*/}
+            
         </Container>
     );
 }

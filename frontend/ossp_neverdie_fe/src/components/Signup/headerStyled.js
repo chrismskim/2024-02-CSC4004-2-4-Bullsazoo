@@ -19,7 +19,7 @@ export const Container = styled.div`
     justify-content: flex-start;
     align-items: center;
     gap: 1vw;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
 `;
 
 export const HeaderIcon = styled.div`
