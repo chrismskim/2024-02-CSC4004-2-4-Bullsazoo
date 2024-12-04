@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-YOLO_MODEL_PATH = os.path.join(BASE_DIR, 'backend', 'test', 'yolov5','yolov5s.pt')
+YOLO_MODEL_PATH = os.path.join(BASE_DIR, 'backend', 'test', 'yolov5','best.pt')
 
 load_dotenv()
 # DATABASES 설정
