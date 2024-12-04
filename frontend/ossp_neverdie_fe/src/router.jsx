@@ -7,6 +7,7 @@ import LoginPage from "./pages/LoginPage";
 import Landing_About from "./pages/LandingAbout";
 import CameraPage from "./pages/CameraPage";
 import MyPage from "./pages/MyPage";
+import SuccessLogin from "./components/Login/SuccessLogin";
 
 export const router = createBrowserRouter([
     {
@@ -37,5 +38,9 @@ export const router = createBrowserRouter([
     {
         path: "/MyPage",
         element: <MyPage />,
+    },
+    {
+        path: "/Login/Success",
+        element: <SuccessLogin />,
     },
 ]);
