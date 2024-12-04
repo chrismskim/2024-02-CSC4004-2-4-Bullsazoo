@@ -5,9 +5,14 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from ultralytics import YOLO
+from drf_yasg.utils import swagger_auto_schema
+from drf_yasg import openapi
+from rest_framework.parsers import MultiPartParser
 from django.core.files.storage import default_storage
+
+from .models import AnalyzeResult
 from .yolov5_handler import detect_objects
-from .serializers import AnalyzeResultSerializer
+from .serializers import DetectionSerializer, AnalyzeResultSerializer
 
 
 # YOLO 모델 로드
@@ -15,6 +20,24 @@ MODEL_PATH = settings.YOLO_MODEL_PATH  # YOLO 모델 경로
 model = YOLO(MODEL_PATH)
 
 class YoloImageAnalysisView(APIView):
+    parser_classes = [MultiPartParser]
+
+    @swagger_auto_schema(
+        operation_description="Upload an image to analyze using YOLOv5.",
+        request_body=openapi.Schema(
+            type=openapi.TYPE_OBJECT,
+            properties={
+                'file': openapi.Schema(type=openapi.TYPE_FILE, description='Image file for analysis'),
+            },
+            required=['file'],
+        ),
+        responses={
+            200: AnalyzeResultSerializer(many=False),
+            400: 'No file provided',
+            500: 'Internal server error',
+        },
+    )
+
     def post(self, request, *args, **kwargs):
         file = request.FILES.get('file')
         if not file:
