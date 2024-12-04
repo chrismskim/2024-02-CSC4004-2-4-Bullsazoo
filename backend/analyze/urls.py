@@ -1,6 +1,9 @@
 from django.urls import path
-from .views import analyze_image
+from .views import YoloImageAnalysisView
 
 urlpatterns = [
-    path('analyze/', analyze_image, name='analyze_image'),
+    path('analyze/', YoloImageAnalysisView.as_view(), name='analyze_image'),
 ]
+
+
+
