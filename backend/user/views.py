@@ -1,3 +1,5 @@
+from drf_yasg.utils import swagger_auto_schema
+from drf_yasg import openapi
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -9,6 +11,16 @@ class UserSignupView(APIView):
     """
     사용자가 회원가입 요청을 보냈을 때 데이터를 users 테이블에 저장하는 View
     """
+
+    @swagger_auto_schema(
+        operation_description="Register a new user.",
+        request_body=UserSignupSerializer,
+        responses={
+            201: "User registered successfully",
+            400: "Invalid input data",
+        }
+    )
+
     def post(self, request):
         serializer = UserSignupSerializer(data=request.data)  # 클라이언트로부터 데이터 수신
         if serializer.is_valid():  # 데이터 유효성 검증
@@ -22,6 +34,26 @@ class UserLoginView(APIView):
     """
     사용자가 로그인 요청을 보냈을 때 users 테이블에서 데이터를 확인하고 응답하는 View
     """
+
+    @swagger_auto_schema(
+        operation_description="Log in a user.",
+        request_body=UserLoginSerializer,
+        responses={
+            200: openapi.Response(
+                "Login successful",
+                schema=openapi.Schema(
+                    type=openapi.TYPE_OBJECT,
+                    properties={
+                        'message': openapi.Schema(type=openapi.TYPE_STRING),
+                        'user_id': openapi.Schema(type=openapi.TYPE_INTEGER),
+                    }
+                )
+            ),
+            401: "Invalid credentials",
+            400: "Invalid input data",
+        }
+    )
+
     def post(self, request):
         serializer = UserLoginSerializer(data=request.data)  # 클라이언트로부터 personal_id 받음
         if serializer.is_valid():  # 데이터 유효성 검증
