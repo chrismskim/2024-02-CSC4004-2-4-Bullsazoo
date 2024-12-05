@@ -8,14 +8,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 YOLO_MODEL_PATH = os.path.join(BASE_DIR, 'backend', 'test', 'yolov5','best.pt')
 
 load_dotenv()
-# DATABASES 설정
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.environ.get('DJANGO_DB_NAME', 'help_people'),
         'USER': os.environ.get('DJANGO_DB_USER', 'postgres'),
         'PASSWORD': os.environ.get('DJANGO_DB_PASSWORD', 'Tlswodyd0117!'),
-        'HOST': os.environ.get('DJANGO_DB_HOST', 'localhost'),
+        'HOST': os.environ.get('DJANGO_DB_HOST', '192.168.0.5'),
         'PORT': os.environ.get('DJANGO_DB_PORT', '5432'),
     }
 }
