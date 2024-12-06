@@ -33,7 +33,7 @@ function Signup_id({ nextStep, prevStep, setId }) {
             <S.ButtonType_Speak onClick={startListening}>
                 {listening ? "인식 중지" : "말하기"}
             </S.ButtonType_Speak>
-            <S.ButtonType_prev onClick={prevStep}>이전</S.ButtonType_prev>
+            {/* <S.ButtonType_prev onClick={prevStep}>이전</S.ButtonType_prev> */}
             <S.ButtonType_next onClick={handleNext}>다음</S.ButtonType_next>
         </S.Container>
     );

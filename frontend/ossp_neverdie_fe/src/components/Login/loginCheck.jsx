@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { setUserData } from "../../apis/userData";
 import * as S from "./loginStyled";
 import MainIcon from "../../assets/images/mainIcon.svg";
 
@@ -7,10 +8,11 @@ function LoginCheck({ name, id }) {
     const navigate = useNavigate();
 
     const handleSubmit = () => {
+        setUserData({ name, id }); // 사용자 정보 저장
         console.log("이름:", name);
         console.log("ID:", id);
         alert(`로그인 완료되었습니다!\n이름: ${name}\nID: ${id}`);
-        navigate("/Login/Success"); // 로그인 성공 화면으로 이동
+        navigate("/Login/Success");
     };
 
     return (

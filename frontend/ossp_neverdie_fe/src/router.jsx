@@ -8,6 +8,7 @@ import Landing_About from "./pages/LandingAbout";
 import CameraPage from "./pages/CameraPage";
 import MyPage from "./pages/MyPage";
 import SuccessLogin from "./components/Login/SuccessLogin";
+import Analyzing from "./components/Camera/Analyzing";
 
 export const router = createBrowserRouter([
     {
@@ -42,5 +43,9 @@ export const router = createBrowserRouter([
     {
         path: "/Login/Success",
         element: <SuccessLogin />,
+    },
+    {
+        path: "/Analyzing",
+        element: <Analyzing />,
     },
 ]);
