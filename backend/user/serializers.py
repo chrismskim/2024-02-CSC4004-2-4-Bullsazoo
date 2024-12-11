@@ -15,3 +15,19 @@ class UserSignupSerializer(serializers.ModelSerializer):
 # 로그인용 Serializer
 class UserLoginSerializer(serializers.Serializer):
     personal_id = serializers.CharField(max_length=100)  # personal_id를 받기 위한 필드
+    password = serializers.CharField(write_only=True)  # 비밀번호 필드 추가
+
+    def validate(self, data):
+        personal_id = data.get('personal_id')
+        password = data.get('password')
+
+        try:
+            user = Users.objects.get(personal_id=personal_id)
+        except Users.DoesNotExist:
+            raise serializers.ValidationError("가입되지 않은 회원입니다.")
+
+        if not user.check_password(password):
+            raise serializers.ValidationError("유효하지 않는 패스워드입니다.")
+
+        data['user'] = user
+        return data

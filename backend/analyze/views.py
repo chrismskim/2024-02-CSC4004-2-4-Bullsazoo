@@ -5,7 +5,6 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from ultralytics import YOLO
-from drf_yasg.utils import swagger_auto_schema
 from rest_framework.parsers import MultiPartParser
 from django.core.files.storage import default_storage
 from .models import AnalyzeResult
@@ -15,8 +14,8 @@ from rest_framework import serializers
 
 
 # 저장된 데이터 조회
-result = AnalyzeResult.objects.first()
-print(result.detected_objects)  # 분석된 객체 출력
+#result = AnalyzeResult.objects.first()
+#print(result.detected_objects)  # 분석된 객체 출력
 # 로그 설정
 logger = logging.getLogger(__name__)
 
@@ -33,15 +32,6 @@ class ImageUploadSerializer(serializers.Serializer):
 class YoloImageAnalysisView(APIView):
     parser_classes = [MultiPartParser]
 
-    @swagger_auto_schema(
-        operation_description="Upload an image to analyze using YOLOv5.",
-        request_body=ImageUploadSerializer,  # Serializer 사용
-        responses={
-            200: AnalyzeResultSerializer(many=False),
-            400: 'No file provided',
-            500: 'Internal server error',
-        },
-    )
     def post(self, request, *args, **kwargs):
         logger.debug("Starting image analysis...")  # 로그 추가: 분석 시작
         serializer = ImageUploadSerializer(data=request.data)

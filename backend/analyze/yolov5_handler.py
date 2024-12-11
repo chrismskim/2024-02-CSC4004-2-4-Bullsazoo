@@ -1,18 +1,13 @@
 import os
 import torch
-import pathlib
 from django.conf import settings
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from ultralytics import YOLO
-from drf_yasg.utils import swagger_auto_schema
-from drf_yasg import openapi
 from rest_framework.parsers import MultiPartParser
 from django.core.files.storage import default_storage
-from .models import AnalyzeResult  # 수정: DetectedObject 모델 가져오기
+from .models import AnalyzeResult, DetectedObject  # 수정: DetectedObject 모델 가져오기
 from .serializers import AnalyzeResultSerializer, DetectionSerializer, ImageUploadSerializer
-from rest_framework import serializers
 
 # YOLOv5 모델 초기화
 MODEL_PATH = str(settings.YOLO_MODEL_PATH)  # 모델 경로를 문자열로 변환
@@ -58,15 +53,6 @@ def detect_objects(image_path):
 class YoloImageAnalysisView(APIView):
     parser_classes = [MultiPartParser]
 
-    @swagger_auto_schema(
-        operation_description="Upload an image to analyze using YOLOv5.",
-        request_body=ImageUploadSerializer,  # Serializer 사용
-        responses={
-            200: AnalyzeResultSerializer(many=False),
-            400: 'No file provided or invalid file',
-            500: 'Internal server error',
-        },
-    )
     def post(self, request, *args, **kwargs):
         serializer = ImageUploadSerializer(data=request.data)
 
