@@ -15,7 +15,7 @@ DATABASES = {
         'NAME': os.environ.get('DJANGO_DB_NAME', 'help_people'),
         'USER': os.environ.get('DJANGO_DB_USER', 'postgres'),
         'PASSWORD': os.environ.get('DJANGO_DB_PASSWORD', 'Tlswodyd0117!'),
-        'HOST': os.environ.get('DJANGO_DB_HOST', '192.168.0.5'),
+        'HOST': os.environ.get('DJANGO_DB_HOST', '221.146.126.21'),
         'PORT': os.environ.get('DJANGO_DB_PORT', '5432'),
     }
 }
