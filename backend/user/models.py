@@ -29,4 +29,4 @@ class Users(AbstractBaseUser):
 
     class Meta:
         db_table = 'users'  # PostgreSQL의 테이블 이름
-        managed = False
+        managed = True

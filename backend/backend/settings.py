@@ -12,10 +12,10 @@ load_dotenv()
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('DJANGO_DB_NAME', 'help_people'),
-        'USER': os.environ.get('DJANGO_DB_USER', 'postgres'),
-        'PASSWORD': os.environ.get('DJANGO_DB_PASSWORD', 'Tlswodyd0117!'),
-        'HOST': os.environ.get('DJANGO_DB_HOST', '221.146.126.21'),
+        'NAME': os.environ.get('DJANGO_DB_NAME', 'schev01'),
+        'USER': os.environ.get('DJANGO_DB_USER', 'kmlee'),
+        'PASSWORD': os.environ.get('DJANGO_DB_PASSWORD', 'ks110k1@'),
+        'HOST': os.environ.get('DJANGO_DB_HOST', 'localhost'),
         'PORT': os.environ.get('DJANGO_DB_PORT', '5432'),
     }
 }
@@ -36,11 +36,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'drf_yasg',
     'rest_framework',
     'corsheaders',
     'user',
-    'analyze'
+    'analyze',
 ]
 
 

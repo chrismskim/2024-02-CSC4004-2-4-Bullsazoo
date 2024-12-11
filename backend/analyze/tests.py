@@ -1,6 +1,4 @@
 from django.test import TestCase, Client
-from django.core.files.uploadedfile import SimpleUploadedFile
-import os
 
 class AnalyzeResultTestCase(TestCase):
     def setUp(self):
