@@ -1,20 +1,17 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework.parsers import JSONParser
 from rest_framework import status
-from django.db import transaction  # 트랜잭션 사용
-from django.conf import settings  # MEDIA_ROOT 사용
-from django.core.files.storage import default_storage  # 파일 저장
-from django.core.files.base import ContentFile  # 파일 컨텐츠 처리
-from .models import DetectedObjects
+from django.db import transaction
+from django.conf import settings
 import torch
 from PIL import Image
 import os
-
-server_state = {
-    "detected_objects": []
-}
+from .models import DetectedObjects
 
 class ObjectDetectionView(APIView):
+    parser_classes = [JSONParser]
+
     def get(self, request):
         try:
             # 데이터베이스에서 모든 객체를 조회
@@ -31,7 +28,7 @@ class ObjectDetectionView(APIView):
                     "status": "success",
                     "message": "Retrieved detected objects successfully.",
                     "allowed_methods": ["POST"],
-                    "detected_objects": results,  # 조회된 데이터 포함
+                    "detected_objects": results,
                 },
                 status=status.HTTP_200_OK,
                 content_type="application/json"
@@ -47,23 +44,40 @@ class ObjectDetectionView(APIView):
             )
 
     def post(self, request):
-        # Check if an image is provided
-        image_file = request.FILES.get('image')
-        if not image_file:
+        # JSON 요청에서 파일 이름 가져오기
+        image_name = request.data.get('image_name')
+        if not image_name:
             return Response(
                 {
                     "status": "error",
-                    "message": "Image file is required."
+                    "message": "Image name is required in the request body."
                 },
                 status=status.HTTP_400_BAD_REQUEST
             )
 
-        try:
-            # Save the image to the media folder
-            image_path = os.path.join(settings.MEDIA_ROOT, 'uploads', image_file.name)
-            path = default_storage.save(image_path, ContentFile(image_file.read()))
+        # 파일 확장자 확인 (jpg, png 등만 허용)
+        if not image_name.lower().endswith(('.jpg', '.jpeg', '.png')):
+            return Response(
+                {
+                    "status": "error",
+                    "message": "Unsupported file type. Only jpg, jpeg, png are allowed."
+                },
+                status=status.HTTP_400_BAD_REQUEST
+            )
 
-            # Load YOLOv5 model
+        # 이미지 경로 생성
+        image_path = os.path.join(settings.MEDIA_ROOT, 'uploads', image_name)
+        if not os.path.exists(image_path):
+            return Response(
+                {
+                    "status": "error",
+                    "message": f"The specified image does not exist: {image_path}"
+                },
+                status=status.HTTP_404_NOT_FOUND
+            )
+
+        try:
+            # YOLOv5 모델 로드
             try:
                 model = torch.hub.load('ultralytics/yolov5', 'custom', path='backend/test/yolov5/best.pt')
             except Exception as e:
@@ -75,16 +89,16 @@ class ObjectDetectionView(APIView):
                     status=status.HTTP_500_INTERNAL_SERVER_ERROR
                 )
 
-            # Process the image
+            # 이미지 처리
             try:
-                image = Image.open(image_path)  # 저장된 이미지로 모델 실행
+                image = Image.open(image_path)
                 results = model(image)
 
-                # Parse results
+                # 인식된 객체 파싱
                 detected_objects = results.pandas().xyxy[0].name.tolist()
-                user_id = request.data.get('user_id', 1)  # user_id를 요청 데이터에서 가져옴, 기본값 1
+                user_id = request.data.get('user_id', 1)
 
-                # 트랜잭션으로 데이터 삽입
+                # 데이터베이스에 저장 (트랜잭션 사용)
                 with transaction.atomic():
                     for obj_name in detected_objects:
                         DetectedObjects.objects.create(
@@ -97,7 +111,7 @@ class ObjectDetectionView(APIView):
                         "status": "success",
                         "message": "Image processed and objects saved successfully.",
                         "detected_objects": detected_objects,
-                        "saved_image_path": path  # 저장된 경로 반환
+                        "processed_image_path": image_path
                     },
                     status=status.HTTP_200_OK
                 )
@@ -105,11 +119,10 @@ class ObjectDetectionView(APIView):
                 return Response(
                     {
                         "status": "error",
-                        "message": f"Unexpected error while processing the image: {str(e)}"
+                        "message": f"Error while processing the image: {str(e)}"
                     },
                     status=status.HTTP_500_INTERNAL_SERVER_ERROR
                 )
-
         except Exception as e:
             return Response(
                 {
