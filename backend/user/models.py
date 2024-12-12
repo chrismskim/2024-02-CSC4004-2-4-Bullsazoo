@@ -6,7 +6,7 @@ class UsersManager(BaseUserManager):
         if not personal_id:
             raise ValueError('The personal_id field must be set')
         user = self.model(personal_id=personal_id, **extra_fields)
-        user.set_password(password)
+        user.set_password(password)  # 비밀번호 암호화
         user.save(using=self._db)
         return user
 
