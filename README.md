@@ -4,7 +4,7 @@
 ## 💻 팀원 소개
 ### **Back End**
 | ![](frontend/ossp_neverdie_fe/src/assets/images/jeayong.svg) | ![](frontend/ossp_neverdie_fe/src/assets/images/kyeongsub.svg)  | ![](frontend/ossp_neverdie_fe/src/assets/images/keonmin.svg)
-| :--------------------------------: | :-----------------------------------: | :---------------------------------------: 
+| :--------------------------------: | :-----------------------------------: | :---------------------------------------: |
 | **신재용**                          | **김경섭**                             | **이건민** |
 | *🤴 Lead & ⚙️ Backend*             | *⚙️ Backend*                           | *⚙️ Backend*        
 
@@ -43,12 +43,12 @@
 
 ## **기술 스택**
 ### **Front END**
----
+
 - React
 - HTML / CSS / JavaScipt
 - API : TenserFlow.js / OpenCV.js / WEB STT TTS API
 ### **Back END**
----
+
 - Python (Django Rest Framework)
 - YOLO for object detection
 - Google STT TTS for speech - text 변환
@@ -105,15 +105,15 @@ Value : application/json
 Body :
 raw + JSON
 
-아래 형식으로 저장<br><br>
-{<br><br>
-    "personal_id": "신재용",<br><br>
-    "password": "잘생겼어"<br><br>
-}<br><br>
-SEND 버튼 클릭 및 결과<br><br>
-{<br><br>
-		"알림": "회원가입이 완료되었습니다. 이름 : 신재용, 개인ID : 잘생겼어"<br><br>
-}<br><br>
+아래 형식으로 저장
+{
+    "personal_id": "신재용",
+    "password": "잘생겼어"
+}
+SEND 버튼 클릭 및 결과
+{
+		"알림": "회원가입이 완료되었습니다. 이름 : 신재용, 개인ID : 잘생겼어"
+}
 ```
 로그인도 과정은 똑같습니다.<br><br>
 ---------------------------------------------------------
@@ -138,21 +138,19 @@ raw + JSON
     "user_id": "1" (사용자의 고유 id (default = 1))
 }
 
-<br><br>
-결과 예시<br><br>
-{<br><br>
-    "status": "success",<br><br>
-    "message": "Image processed and objects saved successfully.",<br><br>
-    "detected_objects": [<br><br>
-        "스프라이트"<br><br>
-    ],<br><br>
-    "processed_image_path": "C:\\Users\\Administrator\\Desktop\\newssss\\2024-02-CSC4004-2-4-Bullsazoo\\backend\\media\\uploads\\please.jpg"<br><br>
-}<br><br>
+
+결과 예시
+{
+    "status": "success",
+    "message": "Image processed and objects saved successfully.",
+    "detected_objects": [
+        "스프라이트"
+    ],
+    "processed_image_path": "C:\\Users\\Administrator\\Desktop\\newssss\\2024-02-CSC4004-2-4-Bullsazoo\\backend\\media\\uploads\\please.jpg"
+}
 ```
 여기서 processed_image_path는 로컬 환경의 경로<br><br>
 ---------------------------------------------------------
-
-<br><br>
 ### **Front end**
 **실행 순서**
 1. git clone URL
