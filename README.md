@@ -67,6 +67,8 @@
 <img src="https://img.shields.io/badge/figma-5B0BB5?style=for-the-badge&logo=figma&logoColor=white" alt="icon" /> 
 <img src="https://img.shields.io/badge/notion-000000?style=for-the-badge&logo=notion&logoColor=white" alt="icon" /> 
 </p>
+
+
 ## **파일 구조**
 ### *Front END*
 ```
