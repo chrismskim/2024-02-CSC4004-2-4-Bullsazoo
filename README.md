@@ -52,7 +52,7 @@
 - Python (Django Rest Framework)
 - YOLO for object detection
 - Google STT TTS for speech - text 변환
-
+- PostgreSQL for Database
 ## **파일 구조**
 ### *Front END*
 ```
@@ -89,8 +89,8 @@ src //React 애플리케이션의 메인 폴더로, 프로젝트의 모든 소�
 6. python manage.py runserver
 7. postman 설치 (https://www.postman.com/downloads/)
 ---------------------------------------------------------
-로그인 & 회원가입 테스트
-
+## 로그인 & 회원가입 테스트
+```
 POSTMAN 실행
 method  POST
 
@@ -114,10 +114,12 @@ SEND 버튼 클릭 및 결과<br><br>
 {<br><br>
 		"알림": "회원가입이 완료되었습니다. 이름 : 신재용, 개인ID : 잘생겼어"<br><br>
 }<br><br>
+```
 로그인도 과정은 똑같습니다.<br><br>
 ---------------------------------------------------------
-물체인식 테스트
 
+물체인식 테스트
+```
 backend/media/uploads 경로에 이미지 저장
 
 POSTMAN 실행
@@ -146,6 +148,7 @@ raw + JSON
     ],<br><br>
     "processed_image_path": "C:\\Users\\Administrator\\Desktop\\newssss\\2024-02-CSC4004-2-4-Bullsazoo\\backend\\media\\uploads\\please.jpg"<br><br>
 }<br><br>
+```
 여기서 processed_image_path는 로컬 환경의 경로<br><br>
 ---------------------------------------------------------
 
