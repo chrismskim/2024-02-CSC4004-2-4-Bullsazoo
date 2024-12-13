@@ -42,17 +42,31 @@
 </p>
 
 ## **기술 스택**
-### **Front END**
+<strong> Front END <br></strong>
+<br>
+<img src="https://img.shields.io/badge/react-646CFF?style=for-the-badge&logo=vite&logoColor=white">
+<img src="https://img.shields.io/badge/vite-61DAFB?style=for-the-badge&logo=react&logoColor=black"> 
+<img src="https://img.shields.io/badge/HTML-239120?style=for-the-badge&logo=html5&logoColor=white">
+<img src="https://img.shields.io/badge/CSS-239120?&style=for-the-badge&logo=css3&logoColor=white">
+<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white">
+<img src="https://img.shields.io/badge/axios-5A29E4?style=for-the-badge&logo=axios&logoColor=white">
+</p>
 
-- React
-- HTML / CSS / JavaScipt
-- API : TenserFlow.js / OpenCV.js / WEB STT TTS API
-### **Back END**
+<strong> Back END <br></strong>
+<br>
+<img src="https://img.shields.io/badge/django-092E20?style=for-the-badge&logo=django&logoColor=white"> 
+<img src="https://img.shields.io/badge/DJANGO_REST-ff1709?style=for-the-badge&logo=django&logoColor=white&color=ff1709&labelColor=gray"> 
+<img src="https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white"> 
+<img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" alt="icon" />
 
-- Python (Django Rest Framework)
-- YOLO for object detection
-- Google STT TTS for speech - text 변환
-- PostgreSQL for Database
+<strong> Tool <br></strong>
+<br>
+<img src="https://img.shields.io/badge/pycharm-D9411E?style=for-the-badge&logo=pycharm&logoColor=white" alt="icon" />
+<img src="https://img.shields.io/badge/visualstudiocode-007ACC?style=for-the-badge&logo=visualstudiocode&logoColor=white" alt="icon" /> 
+<img src="https://img.shields.io/badge/GitKraken-179287?style=for-the-badge&logo=GitKraken&logoColor=white" alt="icon" />  
+<img src="https://img.shields.io/badge/figma-5B0BB5?style=for-the-badge&logo=figma&logoColor=white" alt="icon" /> 
+<img src="https://img.shields.io/badge/notion-000000?style=for-the-badge&logo=notion&logoColor=white" alt="icon" /> 
+</p>
 ## **파일 구조**
 ### *Front END*
 ```
