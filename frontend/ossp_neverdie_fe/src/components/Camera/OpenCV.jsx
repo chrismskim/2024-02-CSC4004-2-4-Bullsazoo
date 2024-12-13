@@ -15,7 +15,8 @@ const OpenCV = () => {
         navigate("/MyPage");
     };
 
-    const handleCapture = async () => {
+    // "분석" 버튼 클릭 시 캔버스 내용을 캡쳐하여 저장
+    const handleCapture = () => {
         if (!canvasRef.current || !videoRef.current) {
             alert("캔버스 또는 비디오가 초기화되지 않았습니다.");
             return;
@@ -25,7 +26,7 @@ const OpenCV = () => {
         const video = videoRef.current;
     
         // 비디오 비율 계산
-        const videoWidth = video.videoWidth;
+        const videoWidth = video.videoWidth; 
         const videoHeight = video.videoHeight;
     
         // 캔버스 크기를 비디오와 동일하게 설정
@@ -34,36 +35,36 @@ const OpenCV = () => {
     
         const ctx = canvas.getContext("2d");
     
-        // 비디오를 캔버스에 그리기
+        // 비디오를 캔버스에 그리기 (비율 유지)
         ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
     
-        // Blob 형태로 변환
-        canvas.toBlob(async (blob) => {
-            const formData = new FormData();
-            formData.append("image", blob, "captured_image.png");
+        // 이미지 데이터 생성
+        const imageDataURL = canvas.toDataURL("image/png");
     
-            try {
-                const response = await fetch("http://127.0.0.1:8000/upload/", {
-                    method: "POST",
-                    body: formData,
-                });
+        // 이미지 데이터를 상태에 저장
+        setCapturedImage(imageDataURL);
     
-                if (!response.ok) {
-                    throw new Error("Failed to upload image");
-                }
+        // 이미지 다운로드
+        const link = document.createElement("a");
+        link.href = imageDataURL;
+        link.download = "captured_image.png"; // 다운로드 파일명 설정
+        link.click();
     
-                const data = await response.json();
-                console.log("Uploaded Image Path:", data.image_path);
-    
-                // `Analyzing` 페이지로 이동하며 업로드된 이미지 경로 전달
-                navigate("/Analyzing", { state: { imagePath: data.image_path } });
-            } catch (error) {
-                console.error("Error uploading image:", error);
-                alert("이미지 업로드 중 문제가 발생했습니다.");
-            }
-        }, "image/png");
+        // `Analyzing` 페이지로 이동하며 이미지 데이터 전달
+        navigate("/Analyzing", { state: { image: imageDataURL } });
     };
-    
+
+    // // 이미지 다운로드
+    // const handleDownload = () => {
+    //     if (capturedImage) {
+    //         const link = document.createElement("a");
+    //         link.href = capturedImage;
+    //         link.download = "captured_image.png"; // 다운로드 파일명 설정
+    //         link.click();
+    //     } else {
+    //         alert("다운로드할 이미지가 없습니다.");
+    //     }
+    // };
 
     useEffect(() => {
         if (cameraInitialized) {
@@ -94,6 +95,9 @@ const OpenCV = () => {
             <S.ButtonType2 onClick={handleCapture}>
                 분석 (사진)
             </S.ButtonType2>
+            {/* <S.ButtonType1 onClick={handleDownload}>
+                다운로드
+            </S.ButtonType1> */}
             <S.ButtonType1 onClick={goMyPage}>
                 마이페이지
             </S.ButtonType1>
