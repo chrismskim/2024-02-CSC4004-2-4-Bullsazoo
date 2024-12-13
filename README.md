@@ -13,7 +13,7 @@
 | ![](frontend/ossp_neverdie_fe/src/assets/images/kenwoo.svg)  | ![](frontend/ossp_neverdie_fe/src/assets/images/minseong.svg)
 | :-----------------------------------: | :-----------------------------------: |
 | **강근우**                            | **김민성**
-| *💻 Frontend*                         | *💻 Frontend* |
+| *💻 Frontend*    *🎨 Design*                     | *💻 Frontend* |
 
 <br><br>
 ## **프로젝트 소개**
