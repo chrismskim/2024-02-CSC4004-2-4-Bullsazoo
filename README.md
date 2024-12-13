@@ -42,6 +42,16 @@
 
 ### **Back End**
 
+#### **Preparation**
+best.pt : https://drive.google.com/file/d/15Z3-0yaU2IwgoZvM6V2-ZXNZFlKy0oLo/view?usp=drive_link
+
+1. git clone URL
+2. python -m venv .venv
+3. cd .venv/Scripts
+4. ./activate
+5. repeat cd .. 2 times and cd backend
+6. pip install -r requirements.txt
+7. python backend/test/object_recognition_realtime.py 
 
 <br><br>
 ### **Front end**
