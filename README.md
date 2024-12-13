@@ -43,28 +43,35 @@
 
 ## **기술 스택**
 ### **Front END**
-
+---
+- React
+- HTML / CSS / JavaScipt
+- API : TenserFlow.js / OpenCV.js / WEB STT TTS API
 ### **Back END**
+---
+- Python (Django Rest Framework)
+- YOLO for object detection
+- Google STT TTS for speech - text 변환
 
 ## **파일 구조**
 ### **Front END*
-src //React 애플리케이션의 메인 폴더로, 프로젝트의 모든 소스 코드가 포함됩니다.
- ┣ apis //API 통신 관련 코드가 포함된 폴더입니다.
- ┣ assets //프로젝트에서 사용하는 정적 자원을 저장하는 폴더입니다
- ┃ ┣ font //프로젝트에 사용되는 폰트를 저장합니다
- ┃ ┣ images //이미지 파일을 svg 형식으로 사용합니다
- ┣ components //UI 컴포넌트를 저장하는 폴더로, 재사용 가능한 화면 구성 요소를 포함합니다.
- ┃ ┣ Camera //물체 인식 기능 관련 컴포넌트
- ┃ ┣ LandingPage //랜딩 페이지 관련 컴포넌트
- ┃ ┣ Login //로그인 페이지 관련 컴포넌트
- ┃ ┣ MyPage //마이 페이지 관련 컴포넌트
- ┃ ┗ Signup //회원가입 페이지 관련 컴포넌트
- ┣ hooks // React의 커스텀 훅(Custom Hook)을 저장합니다
- ┣ pages //각 화면(페이지)별로 구성된 컴포넌트가 포함된 폴더입니다
- ┣ styles //글로벌 스타일 또는 테마 설정 파일이 포함됩니다
- ┣ App.jsx //루트 컴포넌트 (전역 상태, 라우팅 설정, 전체 레이아웃)
- ┣ main.jsx //ReactDOM을 사용해 App.jsx를 HTML에 렌더링
- ┗ router.jsx //React Router를 활용한 라우팅 설정 파일
+src //React 애플리케이션의 메인 폴더로, 프로젝트의 모든 소스 코드가 포함됩니다.<br><br>
+ ┣ apis //API 통신 관련 코드가 포함된 폴더입니다.<br><br>
+ ┣ assets //프로젝트에서 사용하는 정적 자원을 저장하는 폴더입니다<br><br>
+ ┃ ┣ font //프로젝트에 사용되는 폰트를 저장합니다<br><br>
+ ┃ ┣ images //이미지 파일을 svg 형식으로 사용합니다<br><br>
+ ┣ components //UI 컴포넌트를 저장하는 폴더로, 재사용 가능한 화면 구성 요소를 포함합니다.<br><br>
+ ┃ ┣ Camera //물체 인식 기능 관련 컴포넌트<br><br>
+ ┃ ┣ LandingPage //랜딩 페이지 관련 컴포넌트<br><br>
+ ┃ ┣ Login //로그인 페이지 관련 컴포넌트<br><br>
+ ┃ ┣ MyPage //마이 페이지 관련 컴포넌트<br><br>
+ ┃ ┗ Signup //회원가입 페이지 관련 컴포넌트<br><br>
+ ┣ hooks // React의 커스텀 훅(Custom Hook)을 저장합니다<br><br>
+ ┣ pages //각 화면(페이지)별로 구성된 컴포넌트가 포함된 폴더입니다<br><br>
+ ┣ styles //글로벌 스타일 또는 테마 설정 파일이 포함됩니다<br><br>
+ ┣ App.jsx //루트 컴포넌트 (전역 상태, 라우팅 설정, 전체 레이아웃)<br><br>
+ ┣ main.jsx //ReactDOM을 사용해 App.jsx를 HTML에 렌더링<br><br>
+ ┗ router.jsx //React Router를 활용한 라우팅 설정 파일<br><br>
  
  
 
