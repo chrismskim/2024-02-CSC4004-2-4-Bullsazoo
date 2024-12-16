@@ -96,9 +96,8 @@ src //React 애플리케이션의 메인 폴더로, 프로젝트의 모든 소�
 ### **Back End**
 
 
-best.pt 파일을 받으셔서 backend/test/yolov5에 저장해주세요!
-best.pt는 따로 파일을 올릴 수가 없어서 djrlee1@naver.com으로 
-메일 주세요!
+best.pt directory : backend/backend/test/yolov5
+best.pt : https://drive.google.com/file/d/15Z3-0yaU2IwgoZvM6V2-ZXNZFlKy0oLo/view?usp=drive_link
 
 물체인식 및 로그인 & 회원가입 테스트 가이드라인 (POSTMAN)
 **실행 순서**
