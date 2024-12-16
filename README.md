@@ -50,7 +50,6 @@
 <img src="https://img.shields.io/badge/CSS-239120?&style=for-the-badge&logo=css3&logoColor=white">
 <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white">
 <img src="https://img.shields.io/badge/axios-5A29E4?style=for-the-badge&logo=axios&logoColor=white">
-</p>
 
 <strong> Back END <br></strong>
 <br>
@@ -65,8 +64,7 @@
 <img src="https://img.shields.io/badge/visualstudiocode-007ACC?style=for-the-badge&logo=visualstudiocode&logoColor=white" alt="icon" /> 
 <img src="https://img.shields.io/badge/GitKraken-179287?style=for-the-badge&logo=GitKraken&logoColor=white" alt="icon" />  
 <img src="https://img.shields.io/badge/figma-5B0BB5?style=for-the-badge&logo=figma&logoColor=white" alt="icon" /> 
-<img src="https://img.shields.io/badge/notion-000000?style=for-the-badge&logo=notion&logoColor=white" alt="icon" /> 
-</p>
+<img src="https://img.shields.io/badge/notion-000000?style=for-the-badge&logo=notion&logoColor=white" alt="icon" />
 
 
 ## **파일 구조**
@@ -106,8 +104,7 @@ best.pt : https://drive.google.com/file/d/15Z3-0yaU2IwgoZvM6V2-ZXNZFlKy0oLo/view
 3. source .venv/Scripts/activate(가상환경 활성화)
 4. cd backend
 5. pip install -r requirements.txt(필수 라이브러리 설치)
-6. python manage.py runserver
-7. postman 설치 (https://www.postman.com/downloads/)
+6. backend/backend/test/feature/object_recognition_realtime 모듈 직접 실행
 ---------------------------------------------------------
 ## 로그인 & 회원가입 테스트
 ```
